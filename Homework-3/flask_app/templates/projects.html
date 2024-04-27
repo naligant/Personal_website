@@ -1,0 +1,21 @@
+{% extends 'shared/layout.html' %}
+
+{% block maincontent %}
+<div class="undertext">
+    <p class="fun_fact_style">Below is a list of projects I worked on in CSE 477:</p>
+    <p class="underline">Click an image or a hyperlink in the description to learn more. </p>
+</div>
+<!-- wraps the content for the image and caption in a flexbox inside the main content flexbox -->
+<div class="content_wrapper">
+    <!-- links the image with the piano html page. -->
+    <a href="/piano">
+        <img class="profilePhoto" src="../static/main/images/piano.jpeg" alt="piano">
+    </a>
+    <!-- description for the task. -->
+    <p class="bio">This is the javascript piano task. For this task we make a piano using layering with css and then after, incorporate sound using javascript.</p>
+</div>
+<!-- adds more text after the description and image for the piano. -->
+<div class="undertext">
+    <p class="fun_fact_style">More coming soon!</p>
+</div>
+{% endblock %}

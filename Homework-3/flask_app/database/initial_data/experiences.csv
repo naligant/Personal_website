@@ -1,0 +1,6 @@
+"experience_id","position_id","name","description","hyperlink","start_date","end_date"
+"1","1","Teaching","Taught students the basics of the assignment and easy C++ mehods before the start of labs.","MSU-ULA","2023-08-24","NULL"
+"2","1","Hosted help rooms","Hosted weekly help rooms to aid students","https://lbc.msu.edu/the-briggs-experience/undergraduate-learning-assistants.html","2023-08-24","NULL"
+"3","1","Grading","Graded students' assignment using Codio","https://lbc.msu.edu/the-briggs-experience/undergraduate-learning-assistants.html","2023-08-24","NULL"
+"4","2","AGILE Methodology","embrace an AGILE methodology ans used Jira","NULL","2022-05-15","2024-02-23"
+"5","2","Obfuscation Script","Built an obfuscation tool for Human Resources department","NULL","2022-05-15","2024-02-23"

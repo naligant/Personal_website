@@ -1,0 +1,120 @@
+<!-- FILL ME IN WITH CODE FOR YOUR PAGE LAYOUT -->
+<!DOCTYPE html>
+<html lang="eng">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>My Personal Website</title>
+  <link rel="stylesheet"    href="{{ url_for('static', filename='main/css/main.css') }}">
+  <link rel="stylesheet"    href="{{ url_for('static', filename='main/css/footer.css') }}">
+  <link rel="stylesheet"    href="{{ url_for('static', filename='main/css/navbar.css') }}">
+  <link rel="stylesheet"    href="{{ url_for('static', filename='main/css/header.css') }}">
+  <link rel="stylesheet"    href="{{ url_for('static', filename='resume/css/resume.css') }}">
+  <link rel="stylesheet"    href="{{ url_for('static', filename='form/css/form.css') }}">
+  <link rel="shortcut icon" href="{{ url_for('static', filename='main/images/favicon.ico') }}">
+  {% block extracss %}{% endblock %}
+  <script src="{{ url_for('static', filename='main/js/main.js') }}" defer></script>
+  <script src="{{ url_for('static', filename='form/js/form.js') }}" defer></script>
+  <script src="//code.jquery.com/jquery-1.4.2.min.js"></script>
+  <script src="https://cdn.socket.io/3.1.1/socket.io.min.js"></script>
+  <script src="{{ url_for('static', filename='main/js/chat.js') }}"></script>
+  {% block extrajs %}{% endblock %}
+</head>
+
+<body>
+  <article>
+    <!-- The header  -->
+    <header>
+      <!-- imports banner image -->
+      <img class="bannerimage" src="../static/main/images/banner.jpg" alt="Banner" loading="lazy"/>
+    </header>
+
+    <!-- The navigation bar -->
+    <nav class="navigation">
+      <!-- sets up unordered list elements -->
+      <ul class="ul">
+          <!-- creates flex box for the list of items. -->
+          <div class="list_items">
+              <!-- flex 8 pushes things to the right. -->
+              {% if user != 'Unknown' %}
+                <li style="flex:8"><p>Welcome {{user}}</p></li>
+              {% else %}
+                <li style="flex:8"><p>CSE477 - Homework 3</p></li>
+              {% endif %}
+              <!-- <li style="flex:8"><p>CSE477-Homework 1</p></li> -->
+              <li class="links" style="flex:8"><a href="/home">Home</a></li>
+              <!-- link class for elements makes sure they all end up on the same line in the flex box -->
+              <li class="links"><a href="/projects">Projects</a></li>
+              <li class="links"><a href="/resume">Resume</a></li>
+              <li class="links"><a href="/chat">Chat</a></li>
+              {% if user != 'Unknown' %}
+                <li class="links"><a href="/logout">Logout</a></li>
+              {% else %}
+                <li class="links"><a href="/login">Login</a></li>
+              {% endif %}
+              <li class="links">
+                  <!-- uploads linkedin image and works the same as other links. -->
+                  <a href="https://www.linkedin.com/in/prajeeth-naliganti-0b9159209/">
+                      <img class="linkedinImage" src="../static/main/images/social-linkedin.png" alt="linkedin" loading="lazy"/>
+                  </a>
+              </li>
+              <li>
+                  <!-- menu icon for the menu bar on the navabar -->
+                  <a href="#">
+                      <img class="menu-icon" id="menu_icon" style="flex:1" src="../static/main/images/menu-bar.png" alt="menu" loading="lazy"/>
+                  </a>
+                  <div id="pulldown" class="hidden_menu">
+                    <ul class="ul">
+                      <li><a href="/home">Home</a></li>
+                      <li><a href="/projects">Projects</a></li>
+                      <li><a href="/resume">Resume</a></li>
+                      <li><a href="/chat">Chat</a></li>
+                      {% if user != 'Unknown' %}
+                        <li><a href="/logout">Logout</a></li>
+                      {% else %}
+                        <li><a href="/login">Login</a></li>
+                      {% endif %}
+                      <li>
+                        <!-- uploads linkedin image and works the same as other links. -->
+                        <a href="https://www.linkedin.com/in/prajeeth-naliganti-0b9159209/">
+                          <img class="linkedinImage" src="../static/main/images/social-linkedin.png" alt="linkedin" loading="lazy"/>
+                        </a>
+
+                    </ul>
+                  </div>
+              </li>
+          </div>
+          </div>
+      </ul>
+    </nav>
+    <!-- The main content  -->
+  
+    <main>
+      <div class="content">
+        {% block maincontent %}{% endblock %}
+        <!-- The footer of the file -->
+        <footer class="foot">
+          <p>©Copyright Prajeeth Naliganti</p>
+        </footer>
+      </div>
+    </main>
+    </article>
+  
+</body>
+<button id="display_button" class="display_button"> feedback</button>
+<form id="feedback_form" class="form_format" action="/processfeedback", method="post" enctype="application/x-www-form-urlencoded">
+  <input class="smaller_box" title="name" type="text" id="name" name="name" placeholder="Your name"><br><br>
+  <input class="smaller_box" title="email" type="text" id="email" name="email" placeholder="Your email"><br><br>
+  <input class = "bigger_box" title="comment" type="text" id="comment" name="comment" placeholder="Insert feedback here"><br><br>
+  <input title="submit button for form" type="submit" value="Submit">
+</form>
+</html>
+<script> src="form.js"</script>
+
+
+
+
+
+
+
+

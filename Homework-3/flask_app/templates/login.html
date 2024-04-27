@@ -1,0 +1,59 @@
+{% extends 'shared/layout.html' %}
+
+{% block extrajs %}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+{% endblock %}
+
+
+{% block maincontent %}
+<br><br>
+<!-- <input type="" value=" Login as Owner" onclick="checkCredentials()" /> -->
+
+<form id="login_form" class="login_form">
+    <p>Login</p>
+    <input class="smaller_box" title="email_login" type="text" id="email_login" name="email_login" placeholder="Your email"><br><br>
+    <input class="smaller_box" title="password" type="password" id="password" name="password" placeholder="Your password"><br><br>
+    <input title="submit button for form" type="submit" value="Submit" onclick="checkCredentials()">
+</form>
+<div class="failed_attempts" id="failed_attempts"></div>
+
+<script>
+let count     = 0
+// package data in a JSON object
+var form = document.getElementById("login_form")
+var email = document.getElementById("email_login")
+var password = document.getElementById("password")
+
+form.addEventListener('submit', function(event) {
+    event.preventDefault();
+    var data_d = {'email': email.value, 'password': password.value}
+    console.log('data_d', data_d)
+    checkCredentials(data_d);
+});
+function checkCredentials(data_d) {
+    // SEND DATA TO SERVER VIA jQuery.ajax({})
+    jQuery.ajax({
+        url: "/processlogin",
+        data: data_d,
+        type: "POST",
+        dataType: "json",
+        success:function(returned_data){
+            console.log(returned_data['success'])
+            if (returned_data['success'] == 1) {
+                count = 0;
+                window.location.href = "/home";
+            }
+            else {
+                count ++;
+                message = document.getElementById('failed_attempts')
+                message.textContent = 'Authentication failure: ' + count;
+            }
+              returned_data = JSON.parse(returned_data);
+              window.location.href = "/home";
+            }
+    });
+}
+</script>
+{% endblock %}
+
+

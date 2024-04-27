@@ -1,0 +1,21 @@
+{% extends 'shared/layout.html' %}
+
+{% block maincontent %}
+<!-- wraps the flex box into another small flexbox for the bio picture and text next to the picture. -->
+<div class="content_wrapper">
+    <img class="profilePhoto" src="../static/main/images/profile_photo.png" alt="profile" loading="lazy"/>
+    <p class="bio">Hi my name is Prajeeth and I am a senior studying computer science here at MSU. My main 
+        focus is on AI innovation and machine learning. I got into computer science because of my
+        parents. When I was in 5th grade my dad and I used to build velleman projects (mini circuit projects) together and
+        that started my love for technology. Afterwards, once I moved to high school learning how much of an impact you
+        can make in the digital world got me interested in computer science. From then on, as i was trying to find my main
+        interests, I found AI innovation. This really caught my eye because there are limitless possibilities with this kind
+        of technology.
+    </p>
+</div>
+<!-- text that goes under the bio and picture. -->
+<div class="undertext">
+    <p class="fun_fact_style">A fun fact about me:</p>
+    <p>I was originally born in India but have grown up in the U.S for most of my life.</p>
+</div>
+{% endblock %}

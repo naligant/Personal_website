@@ -1,0 +1,65 @@
+{% extends 'shared/layout.html' %}
+
+{% block maincontent %}
+
+      <!-- format resume to be aligned left-->
+      <div class="resume_format">
+
+        <!-- loop through institutions -->
+        {% for inst_id, inst in resume_data.items() if not none %}
+          <!-- create a flexbox for each institution -->
+          <div class = "each_institution">
+            <div class="resume_name"> 
+              <!-- print out name of each institutions -->
+              <h1 style="flex:8">{{ inst['name']}} </h1>
+              <!-- print out location to the right of the institution name -->
+              <p class="resume_dates">{{ inst['city'] }}, {{ inst['state'] }}</p>
+            </div>
+            <!-- check if there is empty positions in institution -->
+            {% if inst['positions'] != {} %}
+            <!-- loop through positions in the institution -->
+              {% for pos_id, pos in inst['positions'].items() %}
+                <div class = "resume_name">
+                  <!-- print out position title -->
+                  <p style="flex:8" class="resume_type">{{ pos['title'] }}</p>
+                  <!-- print out start date and end_date unless end_date is None -->
+                  <!-- if end_date is none print out Current in its place -->
+                  <p class = "resume_dates"> {{pos['start_date'] }} - {% if pos['end_date'] == None %} Current {% else %} {{ pos['end_date'] }} {% endif %}</p>
+                </div>
+                <!-- print out responsibilities -->
+                <p> {{ pos['responsibilities'] }}</p>
+                <ul class = resume_content>
+                  <!-- check if there are empty experiences in positions -->
+                  {% if pos['experiences'] != {} %}
+                  <!-- loop through experiences for each position -->
+                    {% for exp_id, exp in pos['experiences'].items() %}
+                      <!-- print out the name of the experience -->
+                      <li>{{ exp['name'] }}
+                        <ul>
+                          <!-- print out the description of the experience -->
+                          <li> {{ exp['description'] }}</li>
+                          <!-- check if skills is an empty in experiences -->
+                          {% if exp['skills'] != {} %}
+                          <!-- loop through skills in experiences -->
+                            {% for skill_id, skill in exp['skills'].items() %}
+                            <!-- print out skill name -->
+                            <li> skill: {{ skill['name'] }}</li>
+                            {% endfor %}
+                          {% endif %}
+                        </ul>
+                      </li>
+                    {% endfor %}
+                  {% endif %}
+                </ul>
+              {% endfor %}
+            {% endif %}
+          </div>
+        <hr>
+        {% endfor %}
+      </div>
+
+
+
+{% endblock %}
+
+

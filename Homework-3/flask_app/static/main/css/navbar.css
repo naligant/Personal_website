@@ -1,0 +1,95 @@
+
+/* main navbar specifications. */
+.navigation{
+    background-color:#000033;
+    color: #d3d3d3;
+    width:100vw;
+    max-width: 100vw;
+    max-height: 10vh;
+}
+/* specifications for the unordered list of links in the navbar */
+.ul{
+    list-style-type: none;
+    margin:0;
+    padding:0;
+}
+/* creates flex box for navigation and adds specifications */
+.list_items{
+    display:flex;
+    justify-content: flex-start;
+    align-items:center;
+    height:100%;
+}
+/* specifications for links in navbar */
+.list_items a{
+    color:#d3d3d3;
+    text-decoration: none;
+}
+/* specifications for the name in the navbar */
+.list_items p{
+    margin-left: 2vw;
+}
+/* makes it so links opacity changes when you hover over */
+.list_items a:hover{
+    opacity:0.5;
+}
+/* puts all the links on the right side. */
+.list_items li{
+    justify-content: flex-end;
+    margin-right:10px;
+}
+/* some links are created as seperate flexboxes */
+.links{
+    display:flex;
+}
+/* specifications for the menu bar in navbar */
+.menu-icon{
+    display:none;
+    max-height:8vh;
+    max-width:8vw;
+}
+/* specifications for the linkedin image in navbar */
+.linkedinImage{
+    max-height:6vh;
+    max-width:6vw;
+}
+
+.hidden_menu{
+    z-index: 999;
+    margin-right: 100px;
+    position:fixed;
+    list-style-type: none;
+    /* margin-top: 4vh; */
+    display:none;
+    width:20vw;
+    background-color: #000033;
+    justify-content: flex-start;
+
+    /* flex-direction: flex-end; */
+    align-items:center
+}
+
+/* .hidden_menu ul{
+    list-style-type: none;
+
+} */
+/* specifications when the screen shrinks past 650 px width */
+@media (max-width:650px)
+{
+    /* menu icon appears */
+    .menu-icon{
+        display:flex;
+        justify-content: flex-start;
+    }
+    /* links disappear */
+    .links{
+        display:none;
+        /* justify-content: flex-start; */
+    }
+}
+@media (min-width:650px)
+{
+    .hidden_menu{
+        display: none;
+    }
+}

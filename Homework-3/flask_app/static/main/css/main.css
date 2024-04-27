@@ -1,0 +1,198 @@
+/* makes flex box for the content on the page */
+.content{
+    display:flex;
+    flex-direction: column;
+}
+/* makes a separate flexbox inside the outside flexbox for the content. */
+.content_wrapper{
+    display:flex;
+    flex-direction: row;
+    padding-top: 2vw;
+    padding-left:3vw;
+    padding-right:3vw;
+    padding-bottom: 4vh;
+    text-overflow: auto;
+}
+/* specifications for bio and normal text next to images in the content-wrapper flexbox */
+.bio{
+    text-align: justify;
+    text-justify: inter-word;
+    margin-left: 30px;
+    text-overflow: auto;
+}
+/* specifications for images in the second flexbox including profile photo */
+.profilePhoto{
+    max-height: 50vh;
+    max-width: 50vw;
+    align-content: center;
+    border: 5px solid black;
+    overflow: none;
+}
+/* border for separating content. */
+.underline{
+    padding-left:2vw;
+    padding-right:2vw;
+    padding-bottom: 4vh;
+    border-bottom: 1px solid  grey; 
+}
+/* text for after border and for normal text */
+.undertext{
+    align-items: center;
+    text-align: center;
+    border-top: 1px solid  grey;
+    margin-left:3vw;
+    margin-right:3vw;
+}
+/* stretching effect for bigger font */
+.fun_fact_style{
+    font-size: 3vh;
+    font-family: Verdana;
+}
+
+/* for piano page, creates a flex box where the piano and text are in */
+.piano_box{
+    display:flex;
+    align-self: center;
+    background-color: #1c2e4a;
+    border-radius: 10px;
+    height: 575px;
+    width: 575px;
+    margin-bottom: 5vh;
+    z-index:8;
+}
+/* text in piano flexbox */
+.piano_text{
+    margin-left: 175px;
+    position:absolute;
+    z-index:1;
+    
+}
+/* specifications to make the text in the flexbox different */
+.piano_text p{
+    color:white;
+    font-size: 30px;
+    font-family: cursive;
+}
+/* main piano specifications */
+.piano{
+    display:flex;
+    align-self: center;
+    border-radius: 10px;
+    margin-top: 140px;
+    margin-left: 38px;
+    height: 300px;
+    width: 500px;
+}
+/* specifications for white keys for the piano */
+.whitekey{
+    z-index: 2;
+    position:relative;
+    width:42px;
+    height: 292px;
+    border-radius: 10px;
+    background-color:white;
+    border: 4px solid black;
+}
+
+/* black keys for piano */
+.blackkey{
+    z-index:3;
+    margin-left:38px;
+    position:absolute;
+    height: 170px;
+    width: 17px;
+    border-radius: 10px;
+    border: 4px solid black;
+    background-color:black;
+}
+
+.blackkey2{
+    z-index:3;
+    margin-left:88px;
+    position:absolute;
+    height: 170px;
+    width: 17px;
+    border-radius: 10px;
+    border: 4px solid black;
+    background-color:black;
+}
+.blackkey3{
+    z-index:3;
+    margin-left:188px;
+    position:absolute;
+    height: 170px;
+    width: 17px;
+    border-radius: 10px;
+    border: 4px solid black;
+    background-color:black;
+}
+.blackkey4{
+    z-index:3;
+    margin-left: 238px;
+    position:absolute;
+    height: 170px;
+    width: 17px;
+    border-radius: 10px;
+    border: 4px solid black;
+    background-color:black;
+}
+.blackkey5{
+    z-index:3;
+    margin-left: 288px;
+    position:absolute;
+    height: 170px;
+    width: 17px;
+    border-radius: 10px;
+    border: 4px solid black;
+    background-color:black;
+}
+.blackkey6{
+    z-index:3;
+    margin-left: 388px;
+    position:absolute;
+    height: 170px;
+    width: 17px;
+    border-radius: 10px;
+    border: 4px solid black;
+    background-color:black;
+}
+.blackkey7{
+    z-index:3;
+    margin-left: 438px;
+    position:absolute;
+    height: 170px;
+    width: 17px;
+    border-radius: 10px;
+    border: 4px solid black;
+    background-color:black;
+}
+
+/* specifications for when width of window decreases past 650px */
+@media (max-width:650px)
+{
+    /* changes the bio and image corresponding to it vertical */
+    .content_wrapper{
+        padding-bottom: none;
+        flex-direction: column;
+        text-overflow: visible;
+        align-items: center;
+    }
+    /* margins for bio are decreased since it is vertical */
+    .bio{
+        margin-left: 0;
+    }
+    /* content also becomes vertical in flex box. */
+    .content{
+        flex-direction: column;
+        align-self: center;
+        align-items: center;
+        /* width: 80vw; */
+    }
+}
+
+.failed_attempts {
+    align-self: center;
+    margin-top: 2vh;
+    margin-bottom: 1vh;
+    color: #FF0000;
+}

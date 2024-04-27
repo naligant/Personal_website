@@ -1,0 +1,30 @@
+.resume_type{
+    font-size: 3vh;
+    margin-bottom: none;
+}
+
+.resume_name {
+    margin-bottom: 1vw;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    
+}
+.resume_name p{
+    justify-content: flex-end;
+}
+
+.resume_format{
+    align-items: left;
+    text-align: left;
+    border-top: 1px solid  grey;
+    margin-left:3vw;
+    margin-right:3vw;
+}
+
+.resume_content{
+    font-size: 2vh;
+}
+.resume_dates{
+    display: flex;
+}

@@ -1,0 +1,82 @@
+{% extends 'shared/layout.html' %}
+
+{% block extracss %}
+<style> 
+#chat {
+  width: 100%;
+  height: 350px;
+  padding: 12px 20px;
+  box-sizing: border-box;
+  border: 2px solid #ccc;
+  border-radius: 4px;
+  background-color: #f8f8f8;
+  font-size: 16px;
+  resize: none;
+  overflow-y:auto
+}
+
+#leave_chat {
+    width: 100px;
+    margin-bottom: 2vh;
+    text-decoration: none;
+    align-self: center;
+
+}
+
+#email_chat{
+    align-self:center;
+}
+</style>
+{% endblock %}
+
+{% block extrajs %}
+<script type="text/javascript" src="//code.jquery.com/jquery-1.4.2.min.js"></script>
+<script src="https://cdn.socket.io/3.1.1/socket.io.min.js"></script>
+<script type="text/javascript" charset="utf-8">
+    var socket;
+    $(document).ready(function(){
+        
+        socket = io.connect('https://' + document.domain + ':' + location.port + '/chat');
+        socket.on('connect', function() {
+            console.log('here');
+            socket.emit('joined', {});
+        });
+        
+        socket.on('status', function(data) {     
+            let tag  = document.createElement("p");
+            let text = document.createTextNode(data.msg);
+            let element = document.getElementById("chat");
+            tag.appendChild(text);
+            tag.style.cssText = data.style;
+            element.appendChild(tag);
+            $('#chat').scrollTop($('#chat')[0].scrollHeight);
+        });
+
+        $('#submit_chat').click(function(event) {
+            // let message = message_chat.val();
+            socket.emit('text_message', {'msg': $('#message_chat').val()});
+        })
+
+        $('#leave_chat').click(function(event) {
+            socket.emit('left', {});
+            window.location.href = '/home';
+        })
+
+
+    });
+</script>
+{% endblock %}
+
+
+{% block maincontent %}
+<p>Chat</p>
+
+<div id='chat' contenteditable></div>
+
+<p class="email_chat" id="email_chat">
+    <input id="message_chat" placeholder="Enter Your Message Here" />
+    <input id="submit_chat" type="submit" value="Submit"/>
+</p>
+
+<button class="leave_chat" id="leave_chat">Leave Chat</button>
+{% endblock %}

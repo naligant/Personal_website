@@ -1,0 +1,18 @@
+
+{% extends 'shared/layout.html' %}
+
+{% block maincontent %}
+    <div class="undertext">
+        <p class="fun_fact_style">Thanks for your feedback - here's what others had to say:</p>
+    </div>
+    <ul>
+    {% if feedback %}
+        {% for comment_id, comment in feedback.items() %}
+            {% if comment is not none %}
+                <li>{{ comment['name'] }} said: {{ comment['comment'] }} </li>
+                    <!-- You can access other fields of the feedback here -->
+            {% endif %}
+        {% endfor %}
+    {% endif %}
+    </ul>
+{% endblock %}
